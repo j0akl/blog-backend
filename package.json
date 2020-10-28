@@ -1,0 +1,30 @@
+{
+  "name": "blog-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^2.18.2",
+    "argon2": "^0.27.0",
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-mysql-session": "^2.1.4",
+    "express-session": "^1.17.1",
+    "graphql": "^15.4.0",
+    "mysql": "^2.18.1",
+    "type-graphql": "^1.1.0",
+    "typeorm": "^0.2.28",
+    "typescript": "^4.0.5"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon dist/index.js",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "@types/express-session": "^1.17.0",
+    "@types/mysql": "^2.15.15",
+    "nodemon": "^2.0.6"
+  }
+}
