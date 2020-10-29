@@ -4,6 +4,7 @@ import {
   Ctx,
   Field,
   InputType,
+  Int,
   Mutation,
   ObjectType,
   Query,
@@ -12,6 +13,7 @@ import {
 import { FieldError } from "../utils/fieldError";
 import { MyContext } from "../types";
 import { validateCreatePost } from "../utils/validateCreatePost";
+import { getConnection } from "typeorm";
 
 @ObjectType()
 export class PostResponse {
@@ -34,8 +36,14 @@ export class CreatePostInput {
 @Resolver()
 export class PostResolver {
   @Query(() => Post)
-  async post(@Arg("id") id: number) {
-    return await Post.findOne(id);
+  async post(@Arg("id", () => Int) id: number) {
+    const qb = getConnection()
+      .getRepository(Post)
+      .createQueryBuilder("p")
+      .where("p.id = :id", { id })
+      .innerJoinAndSelect("p.user", "u", "u.id = p.userId");
+    const post = await qb.getOne();
+    return post;
   }
   @Mutation(() => PostResponse)
   async createPost(
