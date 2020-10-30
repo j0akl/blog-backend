@@ -51,5 +51,5 @@ import cors from "cors";
     context: ({ req, res }) => ({ req, res }),
   });
   apolloServer.applyMiddleware({ app, cors: false });
-  app.listen(PORT, () => console.log("server running on post: ", PORT));
+  app.listen(PORT, () => console.log("server running on port: ", PORT));
 })().catch((err) => console.log(err));

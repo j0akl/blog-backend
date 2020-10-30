@@ -45,6 +45,17 @@ export class PostResolver {
     const post = await qb.getOne();
     return post;
   }
+  @Query(() => [Post])
+  async posts() {
+    // right now, this returns all the posts in the database
+    // fine for the personal blog, change this later though
+    const qb = getConnection()
+      .getRepository(Post)
+      .createQueryBuilder("p")
+      .innerJoinAndSelect("p.user", "u", "u.id = p.userId");
+    const posts = qb.getMany();
+    return posts;
+  }
   @Mutation(() => PostResponse)
   async createPost(
     @Arg("input") input: CreatePostInput,
