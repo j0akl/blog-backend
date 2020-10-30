@@ -52,7 +52,8 @@ export class PostResolver {
     const qb = getConnection()
       .getRepository(Post)
       .createQueryBuilder("p")
-      .innerJoinAndSelect("p.user", "u", "u.id = p.userId");
+      .innerJoinAndSelect("p.user", "u", "u.id = p.userId")
+      .orderBy("p.createdAt", "DESC");
     const posts = qb.getMany();
     return posts;
   }
