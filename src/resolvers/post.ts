@@ -54,7 +54,7 @@ export class PostResolver {
       .createQueryBuilder("p")
       .innerJoinAndSelect("p.user", "u", "u.id = p.userId")
       .orderBy("p.createdAt", "DESC");
-    const posts = qb.getMany();
+    const posts = await qb.getMany();
     return posts;
   }
   @Mutation(() => PostResponse)
