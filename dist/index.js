@@ -53,6 +53,7 @@ const cors_1 = __importDefault(require("cors"));
     }));
     app.use(cors_1.default({ credentials: true, origin: "http://localhost:5000" }));
     const apolloServer = new apollo_server_express_1.ApolloServer({
+        playground: true,
         schema: yield type_graphql_1.buildSchema({
             resolvers: [user_1.UserResolver, post_1.PostResolver],
             validate: false,

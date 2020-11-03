@@ -45,6 +45,7 @@ import cors from "cors";
   app.use(cors({ credentials: true, origin: "http://localhost:5000" }));
 
   const apolloServer = new ApolloServer({
+    playground: true,
     schema: await buildSchema({
       resolvers: [UserResolver, PostResolver],
       validate: false,
