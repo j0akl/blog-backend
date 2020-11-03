@@ -26,6 +26,7 @@ import cors from "cors";
   });
 
   const app = express();
+  app.get("/", (_, res) => res.send("hello"));
   app.use(
     session({
       name: COOKIE_NAME,

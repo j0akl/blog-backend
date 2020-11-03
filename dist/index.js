@@ -37,6 +37,7 @@ const cors_1 = __importDefault(require("cors"));
         entities: [User_1.User, Post_1.Post],
     });
     const app = express_1.default();
+    app.get("/", (_, res) => res.send("hello"));
     app.use(express_session_1.default({
         name: constants_1.COOKIE_NAME,
         store: new MySQLStore(db_1.sqlOptions),
