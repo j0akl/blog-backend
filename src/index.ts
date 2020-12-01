@@ -46,6 +46,7 @@ import cors from "cors";
 
   const apolloServer = new ApolloServer({
     playground: !__prod__,
+    introspection: __prod__,
     schema: await buildSchema({
       resolvers: [UserResolver, PostResolver],
       validate: false,
