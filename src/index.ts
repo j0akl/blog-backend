@@ -16,11 +16,11 @@ import cors from "cors";
 (async () => {
   const connection = createConnection({
     type: "mysql",
-    host: "localhost",
-    username: "root",
-    password: "goober123",
-    database: "blog",
-    logging: true,
+    host: "sql9.freemysqlhosting.net",
+    username: "sql9379625",
+    password: "Rk7WjKP5Kb",
+    database: "sql9379625",
+    logging: !__prod__,
     synchronize: true,
     entities: [User, Post],
   });
@@ -42,11 +42,10 @@ import cors from "cors";
       },
     })
   );
-  app.use(cors({ credentials: true, origin: "http://localhost:5000" }));
+  app.use(cors({ credentials: true, origin: "http://www.jake-lynn.com" }));
 
   const apolloServer = new ApolloServer({
-    playground: true,
-    introspection: true,
+    playground: !__prod__,
     schema: await buildSchema({
       resolvers: [UserResolver, PostResolver],
       validate: false,

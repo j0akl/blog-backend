@@ -1,10 +1,10 @@
 import { createConnection } from "mysql";
 
 export const sqlOptions = {
-  host: "localhost",
-  user: "root",
-  password: "goober123",
-  database: "blog",
+  host: "sql9.freemysqlhosting.net",
+  user: "sql9379625",
+  password: "Rk7WjKP5Kb",
+  database: "sql9379625",
 };
 
 export const db = createConnection(sqlOptions);
