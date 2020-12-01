@@ -42,7 +42,12 @@ import cors from "cors";
       },
     })
   );
-  app.use(cors({ credentials: true, origin: "http://www.jake-lynn.com" }));
+  app.use(
+    cors({
+      credentials: true,
+      origin: "https://sad-stonebraker-951b79.netlify.app/",
+    })
+  );
 
   const apolloServer = new ApolloServer({
     playground: !__prod__,
